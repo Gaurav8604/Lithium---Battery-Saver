@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "trP620heZqrWwaEfyvndOXKDURXwGP1RCCPDdHLKs5MAdKDG7t9GAAaRzr8VV2gdY5vwhfOimzsQInK5cvkcsg==",
+  "success": true,
+  "projectFilePath": "D:\\Coding\\Visual Studio Projects\\Lithium - Battery Saver\\Lithium - Battery Saver.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gaura\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
+    "C:\\Users\\gaura\\.nuget\\packages\\system.management\\6.0.0\\system.management.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
