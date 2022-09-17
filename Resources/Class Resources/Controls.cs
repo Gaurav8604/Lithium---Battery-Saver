@@ -60,12 +60,12 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
     {
         public void submitbuttonclicked(TextBox minbatterybox, TextBox maxbatterybox)
         {
-            if (minbatterybox.Text == "" || Int16.Parse(minbatterybox.Text) <= 0 || Int16.Parse(minbatterybox.Text) > 100)
+            if (minbatterybox.Text == "" || Int16.Parse(minbatterybox.Text) < 0 || Int16.Parse(minbatterybox.Text) > 100)
             {
                 MessageBox.Show("Please enter value between 1 - 100", "Error", MessageBoxButtons.OK);
                 minbatterybox.Text = getMinBattery().ToString();
             }
-            else if (maxbatterybox.Text == "" || Int16.Parse(maxbatterybox.Text) <= 0 || Int16.Parse(maxbatterybox.Text) > 100)
+            else if (maxbatterybox.Text == "" || Int16.Parse(maxbatterybox.Text) < 0 || Int16.Parse(maxbatterybox.Text) > 100)
             {
                 MessageBox.Show("Please enter value between 1 - 100", "Error", MessageBoxButtons.OK);
                 maxbatterybox.Text = getMaxBattery().ToString();
