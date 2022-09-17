@@ -1,0 +1,110 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Lithium - Battery Saver/1.0.0": {
+        "dependencies": {
+          "CircularProgressBar": "2.8.0.16",
+          "MACTrackBarLib.dll": "1.0.2",
+          "System.Management": "6.0.0"
+        },
+        "runtime": {
+          "Lithium - Battery Saver.dll": {}
+        }
+      },
+      "CircularProgressBar/2.8.0.16": {
+        "dependencies": {
+          "WinFormAnimation": "1.6.0.4"
+        },
+        "runtime": {
+          "lib/net40/CircularProgressBar.dll": {
+            "assemblyVersion": "2.8.0.16",
+            "fileVersion": "2.8.0.16"
+          }
+        }
+      },
+      "MACTrackBarLib.dll/1.0.2": {
+        "runtime": {
+          "lib/net40/MACTrackBarLib.dll": {
+            "assemblyVersion": "1.0.5896.38740",
+            "fileVersion": "1.0.5896.38740"
+          }
+        }
+      },
+      "System.CodeDom/6.0.0": {},
+      "System.Management/6.0.0": {
+        "dependencies": {
+          "System.CodeDom": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Management.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Management.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "WinFormAnimation/1.6.0.4": {
+        "runtime": {
+          "lib/net40/WinFormAnimation.dll": {
+            "assemblyVersion": "1.6.0.4",
+            "fileVersion": "1.6.0.4"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Lithium - Battery Saver/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CircularProgressBar/2.8.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-P31wJxwTcQ2mA7wB4X+tnc9QlfSNyPzEOyt3qjf2/6cLLi8mERAfEwNcgt3Qv38/Xiyreo/nVYDe2zIVEv4SQw==",
+      "path": "circularprogressbar/2.8.0.16",
+      "hashPath": "circularprogressbar.2.8.0.16.nupkg.sha512"
+    },
+    "MACTrackBarLib.dll/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iZj4vJidbiVCcb/LI3j7csCEen1yVpb0CPgMu+yxSmBUBci6csHNEgEJw9+mZVbnWe1/ccT3AUO43PFr+KEIlA==",
+      "path": "mactrackbarlib.dll/1.0.2",
+      "hashPath": "mactrackbarlib.dll.1.0.2.nupkg.sha512"
+    },
+    "System.CodeDom/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CPc6tWO1LAer3IzfZufDBRL+UZQcj5uS207NHALQzP84Vp/z6wF0Aa0YZImOQY8iStY0A2zI/e3ihKNPfUm8XA==",
+      "path": "system.codedom/6.0.0",
+      "hashPath": "system.codedom.6.0.0.nupkg.sha512"
+    },
+    "System.Management/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sHsESYMmPDhQuOC66h6AEOs/XowzKsbT9srMbX71TCXP58hkpn1BqBjdmKj1+DCA/WlBETX1K5WjQHwmV0Txrg==",
+      "path": "system.management/6.0.0",
+      "hashPath": "system.management.6.0.0.nupkg.sha512"
+    },
+    "WinFormAnimation/1.6.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YSic50luSCgFq+JejHBq5DKwxpNP1VH7uOyBXC+8v6dd+CuUYGlKSOL4EbwT1WeWJQvFBoDMqHnq7HsF95kxrw==",
+      "path": "winformanimation/1.6.0.4",
+      "hashPath": "winformanimation.1.6.0.4.nupkg.sha512"
+    }
+  }
+}

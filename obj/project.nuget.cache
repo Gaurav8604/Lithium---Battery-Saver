@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "dgSpecHash": "9jj5LD4Bw8gJanoFDoBDqIw3jtADhiqJhd/eGZcMYWcQRA7kC/UXugmG39j4od5ELAY4PSamhzMQ+q3rKaGo/g==",
+  "success": true,
+  "projectFilePath": "D:\\Coding\\Visual Studio Projects\\Lithium - Battery Saver\\Lithium - Battery Saver.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gaura\\.nuget\\packages\\circularprogressbar\\2.8.0.16\\circularprogressbar.2.8.0.16.nupkg.sha512",
+    "C:\\Users\\gaura\\.nuget\\packages\\mactrackbarlib.dll\\1.0.2\\mactrackbarlib.dll.1.0.2.nupkg.sha512",
+    "C:\\Users\\gaura\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
+    "C:\\Users\\gaura\\.nuget\\packages\\system.management\\6.0.0\\system.management.6.0.0.nupkg.sha512",
+    "C:\\Users\\gaura\\.nuget\\packages\\winformanimation\\1.6.0.4\\winformanimation.1.6.0.4.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'CircularProgressBar 2.8.0.16' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "CircularProgressBar",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MACTrackBarLib.dll 1.0.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "MACTrackBarLib.dll",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'WinFormAnimation 1.6.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "WinFormAnimation",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
+}
