@@ -7,9 +7,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>False</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CircularProgressBar" Version="2.8.0.16" />
+    <PackageReference Include="MACTrackBarLib.dll" Version="1.0.2" />
     <PackageReference Include="System.Management" Version="6.0.0" />
   </ItemGroup>
 

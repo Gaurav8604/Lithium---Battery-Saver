@@ -1,0 +1,24 @@
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\Lithium - Battery Saver.exe
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\Lithium - Battery Saver.deps.json
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\Lithium - Battery Saver.runtimeconfig.json
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\Lithium - Battery Saver.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\Lithium - Battery Saver.pdb
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\CircularProgressBar.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\MACTrackBarLib.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\System.Management.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\WinFormAnimation.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\bin\Release\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.csproj.AssemblyReference.cache
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium___Battery_Saver.Properties.Resources.resources
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium___Battery_Saver.Form1.resources
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.csproj.GenerateResource.cache
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.GeneratedMSBuildEditorConfig.editorconfig
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.AssemblyInfoInputs.cache
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.AssemblyInfo.cs
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.csproj.CoreCompileInputs.cache
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.csproj.CopyComplete
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\refint\Lithium - Battery Saver.dll
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.pdb
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\Lithium - Battery Saver.genruntimeconfig.cache
+D:\Coding\Visual Studio Projects\Lithium - Battery Saver\obj\Release\net6.0-windows\ref\Lithium - Battery Saver.dll

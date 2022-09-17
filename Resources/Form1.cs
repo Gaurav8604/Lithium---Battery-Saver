@@ -1,66 +1,201 @@
 using System.Management;
+using Lithium___Battery_Saver.Resources.Class_Resources;
+
 namespace Lithium___Battery_Saver
 {
     public partial class Form1 : Form
     {
+        SideBar sb;
+        PowerModes pm;
+        MinMaxBattery mmb;
+        Notify nf;
         public Form1()
         {
             InitializeComponent();
+            PowerStatus status = SystemInformation.PowerStatus;
+            sb = new SideBar(status);
+            pm = new PowerModes(powerefficiencybtn, balancedbtn, performancebtn);
+            mmb = new MinMaxBattery();
+            nf = new Notify();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = (2 * 1000);
-            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = (3000);
+            timer.Tick += new EventHandler(timer_Tick!);
             timer.Start();
         }
         private void timer_Tick(object sender, EventArgs e)
         {
             PowerStatus status = SystemInformation.PowerStatus;
-            powerPercentage(status);
-            batteryLifeRemaining(status);
-            plugIn(status);
+            minbatterybox.Text = mmb.getMinBattery().ToString();
+            maxbatterybox.Text = mmb.getMaxBattery().ToString();
+            int bper = sb.getbper();
+            if (bper <= Int16.Parse(mmb.getMinBattery().ToString()))
+                nf.notifymsg(notify, "Battery Underflow", "Please Pug in your charger", new Bitmap(Properties.Resources.alertred));
+            else if (bper >= Int16.Parse(mmb.getMaxBattery().ToString()))
+                nf.notifymsg(notify, "Battery Overflow", "Please Unplug your charger", new Bitmap(Properties.Resources.alertgreen));
+            sb.powerPercentage(circularProgressBar1);
+            sb.batteryLifeRemaining(blifelabel);
+            sb.plugIn(bpluginlabel, pluggedinpicture);
+            details();
         }
-        private void powerPercentage(PowerStatus status)
+        public void details()
         {
-            String bpercentage = status.BatteryLifePercent.ToString("P0");
-            int bper = Int16.Parse(bpercentage.Remove(bpercentage.IndexOf('%')));
-            bpercentagelabel.Text = bpercentage;
-            if (bper <= 20)
-                bpercentagepicture.BackgroundImage = new Bitmap(Properties.Resources.battery20);
-            else if (bper <= 40)
-                bpercentagepicture.BackgroundImage = new Bitmap(Properties.Resources.battery40);
-            else if (bper <= 60)
-                bpercentagepicture.BackgroundImage = new Bitmap(Properties.Resources.battery60);
-            else if (bper <= 80)
-                bpercentagepicture.BackgroundImage = new Bitmap(Properties.Resources.battery80);
-            else if (bper <= 100)
-                bpercentagepicture.BackgroundImage = new Bitmap(Properties.Resources.battery100);
-        }
-        private void batteryLifeRemaining(PowerStatus status)
-        {
-
-            if (status.BatteryLifeRemaining > 0)
+            try
             {
-                blifelabel.Text = String.Format("{0}hr and {1}min", status.BatteryLifeRemaining / 3600, (status.BatteryLifeRemaining % 3600) / 60);
+                ObjectQuery query = new ObjectQuery("SELECT * FROM Win32_Battery");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+                ManagementObjectCollection collection = searcher.Get();
+                foreach (ManagementObject mo in collection)
+                {
+                    switch (Int32.Parse(mo["Availability"].ToString()!))
+                    {
+                        case 1:
+                        case 2:
+                            availabilitylabel.Text = "Unknown";
+                            break;
+                        case 3:
+                            availabilitylabel.Text = "Running or Full Power";
+                            break;
+                        case 4:
+                            availabilitylabel.Text = "Warning";
+                            break;
+                        case 5:
+                            availabilitylabel.Text = "In Test";
+                            break;
+                        case 6:
+                            availabilitylabel.Text = "Not Applicable";
+                            break;
+                        case 7:
+                            availabilitylabel.Text = "Power Off";
+                            break;
+                        case 8:
+                            availabilitylabel.Text = "Off Line";
+                            break;
+                        case 9:
+                            availabilitylabel.Text = "Off Duty";
+                            break;
+                        case 10:
+                            availabilitylabel.Text = "Degraded";
+                            break;
+                        case 11:
+                            availabilitylabel.Text = "Not Installed";
+                            break;
+                        case 12:
+                            availabilitylabel.Text = "Install Error";
+                            break;
+                        case 13:
+                            availabilitylabel.Text = "Power Save - Unknown";
+                            break;
+                        case 14:
+                            availabilitylabel.Text = "Power Save - Low Power";
+                            break;
+                        case 15:
+                            availabilitylabel.Text = "Power Save - Standby";
+                            break;
+                        case 16:
+                            availabilitylabel.Text = "Power Cycle";
+                            break;
+                        case 17:
+                            availabilitylabel.Text = "Power Save - Warning";
+                            break;
+                        case 18:
+                            availabilitylabel.Text = "Paused";
+                            break;
+                        case 19:
+                            availabilitylabel.Text = "Not Ready";
+                            break;
+                        case 20:
+                            availabilitylabel.Text = "Not Configured";
+                            break;
+                        case 21:
+                            availabilitylabel.Text = "Quiesced";
+                            break;
+                        default:
+                            availabilitylabel.Text = "-";
+                            break;
+                    }
+                    switch (Int32.Parse(mo["BatteryStatus"].ToString()!))
+                    {
+                        case 1:
+                            statuslabel.Text = "Discharging";
+                            break;
+                        case 2:
+                            statuslabel.Text = "Unknown";
+                            break;
+                        case 3:
+                            statuslabel.Text = "Fully Charged";
+                            break;
+                        case 4:
+                            statuslabel.Text = "Low";
+                            break;
+                        case 5:
+                            statuslabel.Text = "Critical";
+                            break;
+                        case 6:
+                            statuslabel.Text = "Charging";
+                            break;
+                        case 7:
+                            statuslabel.Text = "Charging and High";
+                            break;
+                        case 8:
+                            statuslabel.Text = "Charging and Low";
+                            break;
+                        case 9:
+                            statuslabel.Text = "Chraging and Critical";
+                            break;
+                        case 10:
+                            statuslabel.Text = "Undefined";
+                            break;
+                        case 11:
+                            statuslabel.Text = "Partially Charged";
+                            break;
+                        default:
+                            statuslabel.Text = "-";
+                            break;
+                    }
+                    switch (Int32.Parse(mo["Chemistry"].ToString()!))
+                    {
+                        case 1:
+                        case 2:
+                            typelabel.Text = "Unknown";
+                            break;
+                        case 3:
+                            typelabel.Text = "Lead Acid";
+                            break;
+                        case 4:
+                            typelabel.Text = "Nickel Cadmium";
+                            break;
+                        case 5:
+                            typelabel.Text = "Nickel Metal Hydride";
+                            break;
+                        case 6:
+                            typelabel.Text = "Lithium-ion";
+                            break;
+                        case 7:
+                            typelabel.Text = "Zinc air";
+                            break;
+                        case 8:
+                            typelabel.Text = "Lithium Polymer";
+                            break;
+                        default:
+                            typelabel.Text = "-";
+                            break;
+                    }
+                    classlabel.Text = mo["CreationClassName"].ToString();
+                    designvoltagelabel.Text = mo["DesignVoltage"].ToString() + " mV";
+                    descriptionlabel.Text = mo["Description"].ToString();
+                    idlabel.Text = mo["DeviceID"].ToString();
+                    performancelabel.Text = mo["Status"].ToString();
+                    powermgmtlabel.Text = mo["PowerManagementSupported"].ToString();
+                    systemnamelabel.Text = mo["SystemName"].ToString();
+                }
             }
-            else
+            catch (Exception e)
             {
-                blifelabel.Text = "Unknown";
-            }
-        }
-        private void plugIn(PowerStatus status)
-        {
-            if (status.PowerLineStatus == PowerLineStatus.Online)
-            {
-                bpluginlabel.Text = "Plugged In";
-                pluggedinpicture.BackgroundImage = new Bitmap(Properties.Resources.pluggedin); 
-            }
-            else
-            {
-                bpluginlabel.Text = "Not Plugged In";
-                pluggedinpicture.BackgroundImage= new Bitmap(Properties.Resources.notpluggedin);  
+                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -73,29 +208,42 @@ namespace Lithium___Battery_Saver
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void controlsbutton_Click(object sender, EventArgs e)
         {
-
+            detailspanel.Visible = false;
+            controlspanel.Visible = true;
+            minbatterybox.Text = mmb.getMinBattery().ToString();
         }
 
-        private void blifelabel_Click(object sender, EventArgs e)
+        private void detailsbutton_Click(object sender, EventArgs e)
         {
-
+            controlspanel.Visible = false;
+            detailspanel.Visible = true;
+        }
+        private void minbattery_keypressed(object sender, KeyPressEventArgs e)
+        {
+            mmb.onlyNumberinput(e);
+        }
+        private void maxbattery_keypressed(object sender, KeyPressEventArgs e)
+        {
+            mmb.onlyNumberinput(e);
+        }
+        private void submitbtn_Click(object sender, EventArgs e)
+        {
+            mmb.submitbuttonclicked(minbatterybox, maxbatterybox);
+        }
+        private void powerefficiencybtn_Click(object sender, EventArgs e)
+        {
+            pm.pwrefficiencybtnclick();
+        }
+        private void balancedbtn_Click(object sender, EventArgs e)
+        {
+            pm.balancedbtnclick();
+        }
+        private void performancebtn_Click(object sender, EventArgs e)
+        {
+            pm.performancebtnclick();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

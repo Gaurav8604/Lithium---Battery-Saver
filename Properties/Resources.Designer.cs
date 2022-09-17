@@ -63,9 +63,9 @@ namespace Lithium___Battery_Saver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap battery100 {
+        internal static System.Drawing.Bitmap alertgreen {
             get {
-                object obj = ResourceManager.GetObject("battery100", resourceCulture);
+                object obj = ResourceManager.GetObject("alertgreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,39 +73,9 @@ namespace Lithium___Battery_Saver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap battery20 {
+        internal static System.Drawing.Bitmap alertred {
             get {
-                object obj = ResourceManager.GetObject("battery20", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap battery40 {
-            get {
-                object obj = ResourceManager.GetObject("battery40", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap battery60 {
-            get {
-                object obj = ResourceManager.GetObject("battery60", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap battery80 {
-            get {
-                object obj = ResourceManager.GetObject("battery80", resourceCulture);
+                object obj = ResourceManager.GetObject("alertred", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,16 +116,6 @@ namespace Lithium___Battery_Saver.Properties {
         internal static System.Drawing.Bitmap pluggedin {
             get {
                 object obj = ResourceManager.GetObject("pluggedin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pluggedin1 {
-            get {
-                object obj = ResourceManager.GetObject("pluggedin1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
