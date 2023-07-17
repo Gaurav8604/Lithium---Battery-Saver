@@ -2,7 +2,7 @@
 
 namespace Lithium___Battery_Saver.Resources.Class_Resources
 {
-    public class PowerModes
+    public class PowerMode
     {
         struct powermodes
         {
@@ -10,7 +10,7 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
         }
         powermodes balanced, performance, efficiency;
         Button powerefficiencybtn, balancedbtn, performancebtn;
-        public PowerModes(Button pwreff, Button bal, Button perf)
+        public PowerMode(Button pwreff, Button bal, Button perf)
         {
             efficiency.mode = "a1841308-3541-4fab-bc81-f71556f20b4a";
             balanced.mode = "381b4222-f694-41f0-9685-ff5bb260df2e";
@@ -86,9 +86,12 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
         public void putMinBattery(int minBattery)
         {
             string filename = @"minbat.txt";
-            FileInfo fi = new FileInfo(filename);
             try
             {
+                if(File.Exists(filename))
+                {
+                    File.Delete(filename);
+                }
                 using (TextWriter tw = File.CreateText(filename))
                 {
                     tw.WriteLine(minBattery);
@@ -96,13 +99,12 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
             }
         }
         public int getMinBattery()
         {
             string filename = @"minbat.txt";
-            FileInfo fi = new FileInfo(filename);
             try
             {
                 using (TextReader tr = File.OpenText(filename))
@@ -114,16 +116,19 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
             }
             return 0;
         }
         public void putMaxBattery(int maxBattery)
         {
             string filename = @"maxbat.txt";
-            FileInfo fi = new FileInfo(filename);
             try
             {
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                }
                 using (TextWriter tw = File.CreateText(filename))
                 {
                     tw.WriteLine(maxBattery);
@@ -131,13 +136,12 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
             }
         }
         public int getMaxBattery()
         {
             string filename = @"maxbat.txt";
-            FileInfo fi = new FileInfo(filename);
             try
             {
                 using (TextReader tr = File.OpenText(filename))
@@ -149,7 +153,7 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
             }
             return 100;
         }

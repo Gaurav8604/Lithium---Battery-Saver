@@ -1,12 +1,13 @@
 using System.Management;
 using Lithium___Battery_Saver.Resources.Class_Resources;
+using Microsoft.Win32;
 
 namespace Lithium___Battery_Saver
 {
     public partial class Form1 : Form
     {
         SideBar sb;
-        PowerModes pm;
+        PowerMode pm;
         MinMaxBattery mmb;
         Notify nf;
         public Form1()
@@ -14,40 +15,55 @@ namespace Lithium___Battery_Saver
             InitializeComponent();
             PowerStatus status = SystemInformation.PowerStatus;
             sb = new SideBar(status);
-            pm = new PowerModes(powerefficiencybtn, balancedbtn, performancebtn);
+            pm = new PowerMode(powerefficiencybtn, balancedbtn, performancebtn);
             mmb = new MinMaxBattery();
             nf = new Notify();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = (3000);
-            timer.Tick += new EventHandler(timer_Tick!);
-            timer.Start();
-        }
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            PowerStatus status = SystemInformation.PowerStatus;
+            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            key.SetValue("Lithium Battery Saver", Application.ExecutablePath);
+            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
+            timer1.Interval = (10);
+            timer1.Tick += new EventHandler(timer_Tick1!);
+            timer1.Interval = (10);
+            timer1.Tick += new EventHandler(timer_Tick2!);
+            timer1.Start();
+            timer2.Start();
             minbatterybox.Text = mmb.getMinBattery().ToString();
             maxbatterybox.Text = mmb.getMaxBattery().ToString();
-            int bper = sb.getbper();
-            if (bper <= Int16.Parse(mmb.getMinBattery().ToString()))
-                nf.notifymsg(notify, "Battery Underflow", "Please Pug in your charger", new Bitmap(Properties.Resources.alertred));
-            else if (bper >= Int16.Parse(mmb.getMaxBattery().ToString()))
-                nf.notifymsg(notify, "Battery Overflow", "Please Unplug your charger", new Bitmap(Properties.Resources.alertgreen));
+        }
+        private void timer_Tick1(object sender, EventArgs e)
+        {
             sb.powerPercentage(circularProgressBar1);
             sb.batteryLifeRemaining(blifelabel);
             sb.plugIn(bpluginlabel, pluggedinpicture);
             details();
         }
+        private void timer_Tick2(object sender, EventArgs e)
+        {
+            PowerStatus status = SystemInformation.PowerStatus;
+            int bper = sb.getbper();
+            if (status.PowerLineStatus == PowerLineStatus.Offline)
+            {
+                if (bper <= Int16.Parse(mmb.getMinBattery().ToString()))
+                    nf.notifymsg(notify, "Battery Underflow", "Please Plug in your charger", new Bitmap(Properties.Resources.alertred));
+            }
+            if (status.PowerLineStatus == PowerLineStatus.Online)
+            {
+                if (bper >= Int16.Parse(mmb.getMaxBattery().ToString()))
+                    nf.notifymsg(notify, "Battery Overflow", "Please Unplug your charger", new Bitmap(Properties.Resources.alertgreen));
+            }
+        }
         public void details()
         {
             try
             {
-                ObjectQuery query = new ObjectQuery("SELECT * FROM Win32_Battery");
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
-                ManagementObjectCollection collection = searcher.Get();
+                ObjectQuery? query = new ObjectQuery("SELECT * FROM Win32_Battery");
+                ManagementObjectSearcher? searcher = new(query);
+                ManagementObjectCollection? collection = searcher.Get();
                 foreach (ManagementObject mo in collection)
                 {
                     switch (Int32.Parse(mo["Availability"].ToString()!))
@@ -192,10 +208,11 @@ namespace Lithium___Battery_Saver
                     powermgmtlabel.Text = mo["PowerManagementSupported"].ToString();
                     systemnamelabel.Text = mo["SystemName"].ToString();
                 }
+
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
+                //MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -244,6 +261,5 @@ namespace Lithium___Battery_Saver
         {
             pm.performancebtnclick();
         }
-
     }
 }

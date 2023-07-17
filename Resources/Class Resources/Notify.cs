@@ -16,7 +16,7 @@
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Exception");
+                //MessageBox.Show(ex.Message, "Exception");
             }
         }
     }
