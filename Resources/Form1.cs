@@ -22,8 +22,10 @@ namespace Lithium___Battery_Saver
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            //key.SetValue("Lithium Battery Saver", Application.ExecutablePath);
+            //Code to start application on startup
+            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            key.SetValue("Lithium Battery Saver", Application.ExecutablePath);
+            
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
             timer1.Interval = (10);
