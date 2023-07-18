@@ -35,25 +35,81 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
         {
             string command = "powercfg setactive " + efficiency.mode;
             cmd(command);
-            powerefficiencybtn.BackColor = Color.Green;
-            balancedbtn.BackColor = Color.White;
-            performancebtn.BackColor = Color.White;
+            changeColor(1);
+            putPowerMode(1);
         }
         public void balancedbtnclick()
         {
             string command = "powercfg setactive " + balanced.mode;
             cmd(command);
-            powerefficiencybtn.BackColor = Color.White;
-            balancedbtn.BackColor = Color.Green;
-            performancebtn.BackColor = Color.White;
+            changeColor(2);
+            putPowerMode(2);
         }
         public void performancebtnclick()
         {
             string command = "powercfg setactive " + performance.mode;
             cmd(command);
-            powerefficiencybtn.BackColor = Color.White;
-            balancedbtn.BackColor = Color.White;
-            performancebtn.BackColor = Color.Green;
+            changeColor(3);
+            putPowerMode(3);
+        }
+        public void changeColor(int powermode)
+        {
+            int x=getPowerMode();
+            if(x==1)
+            {
+                powerefficiencybtn.BackColor = Color.Green;
+                balancedbtn.BackColor = Color.White;
+                performancebtn.BackColor = Color.White;
+            }
+            else if(x==2)
+            {
+                powerefficiencybtn.BackColor = Color.White;
+                balancedbtn.BackColor = Color.Green;
+                performancebtn.BackColor = Color.White;
+            }
+            else
+            {
+                powerefficiencybtn.BackColor = Color.White;
+                balancedbtn.BackColor = Color.White;
+                performancebtn.BackColor = Color.Green;
+            }
+        }
+        public int getPowerMode()
+        {
+            string filename = @"powmode.txt";
+            try
+            {
+                using (TextReader tr = File.OpenText(filename))
+                {
+                    if (new FileInfo(filename).Length != 0)
+                        return Int16.Parse(tr.ReadToEnd());
+                    return 0;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
+            }
+            return 0;
+        }
+        public void putPowerMode(int powermode)
+        {
+            string filename = @"powmode.txt";
+            try
+            {
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                }
+                using (TextWriter tw = File.CreateText(filename))
+                {
+                    tw.WriteLine(powermode);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Exception Raised", MessageBoxButtons.OKCancel);
+            }
         }
     }
     public class MinMaxBattery
@@ -88,7 +144,7 @@ namespace Lithium___Battery_Saver.Resources.Class_Resources
             string filename = @"minbat.txt";
             try
             {
-                if(File.Exists(filename))
+                if (File.Exists(filename))
                 {
                     File.Delete(filename);
                 }

@@ -22,13 +22,13 @@ namespace Lithium___Battery_Saver
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            key.SetValue("Lithium Battery Saver", Application.ExecutablePath);
+            //RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            //key.SetValue("Lithium Battery Saver", Application.ExecutablePath);
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
             timer1.Interval = (10);
             timer1.Tick += new EventHandler(timer_Tick1!);
-            timer1.Interval = (10);
+            timer1.Interval = (1000);
             timer1.Tick += new EventHandler(timer_Tick2!);
             timer1.Start();
             timer2.Start();
@@ -40,6 +40,7 @@ namespace Lithium___Battery_Saver
             sb.powerPercentage(circularProgressBar1);
             sb.batteryLifeRemaining(blifelabel);
             sb.plugIn(bpluginlabel, pluggedinpicture);
+            pm.changeColor(pm.getPowerMode());
             details();
         }
         private void timer_Tick2(object sender, EventArgs e)
@@ -48,12 +49,12 @@ namespace Lithium___Battery_Saver
             int bper = sb.getbper();
             if (status.PowerLineStatus == PowerLineStatus.Offline)
             {
-                if (bper <= Int16.Parse(mmb.getMinBattery().ToString()))
+                if (bper <= mmb.getMinBattery())
                     nf.notifymsg(notify, "Battery Underflow", "Please Plug in your charger", new Bitmap(Properties.Resources.alertred));
             }
             if (status.PowerLineStatus == PowerLineStatus.Online)
             {
-                if (bper >= Int16.Parse(mmb.getMaxBattery().ToString()))
+                if (bper >= mmb.getMaxBattery())
                     nf.notifymsg(notify, "Battery Overflow", "Please Unplug your charger", new Bitmap(Properties.Resources.alertgreen));
             }
         }
@@ -249,6 +250,7 @@ namespace Lithium___Battery_Saver
         {
             mmb.submitbuttonclicked(minbatterybox, maxbatterybox);
         }
+
         private void powerefficiencybtn_Click(object sender, EventArgs e)
         {
             pm.pwrefficiencybtnclick();
@@ -260,6 +262,6 @@ namespace Lithium___Battery_Saver
         private void performancebtn_Click(object sender, EventArgs e)
         {
             pm.performancebtnclick();
-        }
+        } 
     }
 }

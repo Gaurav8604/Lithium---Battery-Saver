@@ -65,8 +65,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.controlspanel = new System.Windows.Forms.Panel();
-            this.balancedbtn = new System.Windows.Forms.Button();
             this.performancebtn = new System.Windows.Forms.Button();
+            this.balancedbtn = new System.Windows.Forms.Button();
             this.powerefficiencybtn = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.submitbtn = new System.Windows.Forms.Button();
@@ -513,8 +513,8 @@
             // 
             // controlspanel
             // 
-            this.controlspanel.Controls.Add(this.balancedbtn);
             this.controlspanel.Controls.Add(this.performancebtn);
+            this.controlspanel.Controls.Add(this.balancedbtn);
             this.controlspanel.Controls.Add(this.powerefficiencybtn);
             this.controlspanel.Controls.Add(this.label13);
             this.controlspanel.Controls.Add(this.submitbtn);
@@ -527,33 +527,32 @@
             this.controlspanel.Size = new System.Drawing.Size(741, 392);
             this.controlspanel.TabIndex = 24;
             // 
+            // performancebtn
+            // 
+            this.performancebtn.Location = new System.Drawing.Point(560, 291);
+            this.performancebtn.Name = "performancebtn";
+            this.performancebtn.Size = new System.Drawing.Size(149, 29);
+            this.performancebtn.TabIndex = 8;
+            this.performancebtn.Text = "Performance";
+            this.performancebtn.UseVisualStyleBackColor = true;
+            // 
             // balancedbtn
             // 
-            this.balancedbtn.Location = new System.Drawing.Point(413, 295);
+            this.balancedbtn.Location = new System.Drawing.Point(400, 292);
             this.balancedbtn.Name = "balancedbtn";
-            this.balancedbtn.Size = new System.Drawing.Size(164, 29);
-            this.balancedbtn.TabIndex = 8;
+            this.balancedbtn.Size = new System.Drawing.Size(149, 29);
+            this.balancedbtn.TabIndex = 7;
             this.balancedbtn.Text = "Balanced";
             this.balancedbtn.UseVisualStyleBackColor = true;
             this.balancedbtn.Click += new System.EventHandler(this.balancedbtn_Click);
             // 
-            // performancebtn
-            // 
-            this.performancebtn.Location = new System.Drawing.Point(583, 295);
-            this.performancebtn.Name = "performancebtn";
-            this.performancebtn.Size = new System.Drawing.Size(135, 29);
-            this.performancebtn.TabIndex = 7;
-            this.performancebtn.Text = "Best Performance";
-            this.performancebtn.UseVisualStyleBackColor = true;
-            this.performancebtn.Click += new System.EventHandler(this.performancebtn_Click);
-            // 
             // powerefficiencybtn
             // 
-            this.powerefficiencybtn.Location = new System.Drawing.Point(243, 295);
+            this.powerefficiencybtn.Location = new System.Drawing.Point(235, 292);
             this.powerefficiencybtn.Name = "powerefficiencybtn";
-            this.powerefficiencybtn.Size = new System.Drawing.Size(164, 29);
+            this.powerefficiencybtn.Size = new System.Drawing.Size(149, 29);
             this.powerefficiencybtn.TabIndex = 6;
-            this.powerefficiencybtn.Text = "Best Power Efficiency";
+            this.powerefficiencybtn.Text = "Power Efficiency";
             this.powerefficiencybtn.UseVisualStyleBackColor = true;
             this.powerefficiencybtn.Click += new System.EventHandler(this.powerefficiencybtn_Click);
             // 
@@ -701,10 +700,10 @@
         private Label label12;
         private Label label11;
         private Button submitbtn;
-        private Button balancedbtn;
-        private Button performancebtn;
-        private Button powerefficiencybtn;
         private Label label13;
         private NotifyIcon notify;
+        private Button performancebtn;
+        private Button balancedbtn;
+        private Button powerefficiencybtn;
     }
 }

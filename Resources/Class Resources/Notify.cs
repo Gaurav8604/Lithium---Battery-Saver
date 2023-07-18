@@ -9,9 +9,9 @@
                 IntPtr ip = bm.GetHicon();
                 Icon ic = Icon.FromHandle(ip);
                 notify.Icon = ic;
-                notify.Visible = true;
                 notify.BalloonTipTitle = baloontiptitle;
                 notify.BalloonTipText = baloontiptext;
+                notify.Visible = true;
                 notify.ShowBalloonTip(100);
             }
             catch (Exception ex)
